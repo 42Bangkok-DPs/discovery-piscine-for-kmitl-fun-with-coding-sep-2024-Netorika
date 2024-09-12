@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		#balloon {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			border-radius: 50%;
+			margin: 50px auto;
+			cursor: pointer;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<div id="balloon"></div>
+	<script>
+		$(document).ready(function() {
+		const $balloon = $('#balloon');
+		let size = 200;
+		const colors = ['red', 'green', 'blue'];
+		let colorIndex = 0;
+
+		function Change_size(change) {
+			size += change;
+			if (size > 420) {
+				size = 200;
+			} else if (size < 200) {
+				size = 200;
+			}
+			$balloon.css({width: size + 'px', height: size + 'px'});
+		}
+
+		function Change_index_color(direction) {
+			colorIndex = (colorIndex + direction + 3) % 3;
+			$balloon.css('backgroundColor', colors[colorIndex]);
+		}
+
+		$balloon.click(function() {
+			Change_size(10);
+			Change_index_color(1);
+		});
+
+		$balloon.mouseenter(function() {
+			Change_size(-5);
+			Change_index_color(-1);
+		});
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<input type="number" id="leftOperand" placeholder="Left Operand" min="0">
+	<select id="operator">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="number" id="rightOperand" placeholder="Right Operand" min="0">
+	<input type="submit" value="Try me!" id="calculateBtn">
+
+	<script>
+		$(document).ready(function() {
+			$('#calculateBtn').on('click', function() {
+				const left = parseFloat($('#leftOperand').val());
+				const operator = $('#operator').val();
+				const right = parseFloat($('#rightOperand').val());
+
+				if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+					alert('Error :(');
+					return;
+				}
+
+				let result;
+				try {
+					switch (operator) {
+						case '+':
+							result = left + right;
+							break;
+						case '-':
+							result = left - right;
+							break;
+						case '*':
+							result = left * right;
+							break;
+						case '/':
+							if (right === 0) throw new Error("It's over 9000!");
+							result = left / right;
+							break;
+						case '%':
+							if (right === 0) throw new Error("It's over 9000!");
+							result = left % right;
+							break;
+					}
+					console.log(`Result: ${result}`);
+					alert(`Result: ${result}`);
+				} catch (error) {
+					alert(error.message);
+					console.log(error.message);
+				}
+			});
+
+			setInterval(function() {
+				alert("Please, use me...");
+			}, 30000);
+		});
+	</script>
+</body>
+</html>
