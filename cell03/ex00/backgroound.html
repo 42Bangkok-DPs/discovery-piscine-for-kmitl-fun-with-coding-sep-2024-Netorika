@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="backgroound.css">
+</head>
+<body>
+	<button onclick="onLick()">Click Me</button>
+
+	<script>
+		function onLick() {
+			const randomColor = Math.floor(Math.random()*16777215).toString(16); //16^6 ;-;
+			document.body.style.backgroundColor = "#" + randomColor;
+		}
+	</script>
+</body>
+</html>
