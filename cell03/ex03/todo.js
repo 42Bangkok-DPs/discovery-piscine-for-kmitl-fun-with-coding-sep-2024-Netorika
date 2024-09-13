@@ -29,18 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function SaveTodos() {
-		SetCookie('todos', JSON.stringify(todos), 365);
+		SetCookie('todos', JSON.stringify(todos));
 	}
 
-	function SetCookie(name, value, days) {
-		const expires = new Date(Date.now() + days * 864e5).toUTCString();
-		document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+	function SetCookie(name, value) {
+		document.cookie = name + '=' + encodeURIComponent(value);
 	}
 
 	function GetCookie(name) {
-		return document.cookie.split('; ').reduce((r, v) => {
+		return document.cookie.split('; ').reduce((i, v) => {
 			const parts = v.split('=');
-			return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+			return parts[0] === name ? decodeURIComponent(parts[1]) : i;
 		}, '');
 	}
 });
