@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	const $ftList = $('#ft_list');
 	let todos = JSON.parse(GetCookie('todos') || '[]');
-
 	function CreateTodo(todo) {
 		const $div = $('<div>').text(todo).addClass('todo-item');
 		$div.click(function() {
@@ -19,7 +18,7 @@ $(document).ready(function() {
 	$('#newTodo').click(function() {
 		const todo = prompt('Enter a new TO DO:');
 		if (todo && todo.trim()) {
-			todos.unshift(todo);
+			todos.push(todo);
 			CreateTodo(todo);
 			SaveTodos();
 		}
@@ -29,7 +28,8 @@ $(document).ready(function() {
 		SetCookie('todos', JSON.stringify(todos));
 	}
 
-	function SetCookie(name, value, days) {
+	function SetCookie(name, value) {
+		console.log(value)
 		document.cookie = name + '=' + encodeURIComponent(value);
 	}
 
