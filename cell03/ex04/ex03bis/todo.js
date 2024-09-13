@@ -26,12 +26,11 @@ $(document).ready(function() {
 	});
 
 	function SaveTodos() {
-		SetCookie('todos', JSON.stringify(todos), 365);
+		SetCookie('todos', JSON.stringify(todos));
 	}
 
 	function SetCookie(name, value, days) {
-		const expires = new Date(Date.now() + days * 864e5).toUTCString();
-		document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+		document.cookie = name + '=' + encodeURIComponent(value);
 	}
 
 	function GetCookie(name) {
